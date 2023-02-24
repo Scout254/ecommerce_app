@@ -1,7 +1,9 @@
 import React from 'react'
 import data from '../constants/data'
+import { useNavigate } from 'react-router-dom';
 const Categories = () => {
   const{categories} = data;
+ 
   return (
     <div className='mt-[250px] mb-12 px-4 md:px-8' >
       

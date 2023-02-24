@@ -4,7 +4,7 @@ import { Banner, Categories, Featured, Footer, Navbar, NewArrivals, NewsLetter, 
 const Home = () => {
   return (
     <div>
-        <Navbar/>
+        
         <Banner/>
         <Categories/>
         <NewArrivals/>

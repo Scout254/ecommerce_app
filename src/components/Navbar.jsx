@@ -1,12 +1,17 @@
 
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { useStateValue } from '../StateProvider'
 
 const Navbar = () => {
+  const [{basket},dispatch] = useStateValue();
   return (
     <div className="sticky top-0 bg-white z-50">
   <div className="flex flex-col lg:flex-row justify-between items-center py-4 px-4 md:px-6 lg:px-8">
     <div>
-      <h1 className="text-2xl lg:text-3xl">MARKET</h1>
+     <Link to="/">
+     <h1 className="text-2xl lg:text-3xl">MARKET</h1>
+     </Link>
     </div>
     <div className="flex justify-center items-center my-4 lg:my-0 lg:ml-4">
       <ul className="list-none flex gap-4 md:gap-6 lg:gap-8">
@@ -37,14 +42,18 @@ const Navbar = () => {
       />
     </div>
     <div className="flex items-center gap-2 lg:gap-4 cursor-pointer">
+      <Link to="/cart">
       <img
         src="https://cdn-icons-png.flaticon.com/128/833/833314.png"
         alt=""
         className="h-6 w-6 md:h-8 md:w-8 transition-transform duration-200 hover:rotate-12"
       />
-      <button className="bg-black text-white h-8 w-20 md:h-10 md:w-24 lg:w-32 cursor-pointer hover:bg-red-400 ease-in-[200ms] rounded-md transition-colors duration-200 text-xs md:text-sm">
+      </Link>
+      <span>{basket?.length}</span>
+      <Link><button onClick={() => alert('Login functionality is not implemented yet!')} className="bg-black text-white h-8 w-20 md:h-10 md:w-24 lg:w-32 cursor-pointer hover:bg-red-400 ease-in-[200ms] rounded-md transition-colors duration-200 text-xs md:text-sm">
         Login
       </button>
+      </Link>
     </div>
   </div>
 </div>
