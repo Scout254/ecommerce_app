@@ -2,6 +2,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useStateValue } from '../StateProvider'
+import { auth } from '../../firebase';
 
 const Navbar = () => {
   const [{basket},dispatch] = useStateValue();
@@ -50,10 +51,10 @@ const Navbar = () => {
       />
       </Link>
       <span>{basket?.length}</span>
-      <Link><button onClick={() => alert('Login functionality is not implemented yet!')} className="bg-black text-white h-8 w-20 md:h-10 md:w-24 lg:w-32 cursor-pointer hover:bg-red-400 ease-in-[200ms] rounded-md transition-colors duration-200 text-xs md:text-sm">
-        Login
+      <button onClick={() => auth.signOut()} className="bg-black text-white h-8 w-20 md:h-10 md:w-24 lg:w-32 cursor-pointer hover:bg-red-400 ease-in-[200ms] rounded-md transition-colors duration-200 text-xs md:text-sm">
+       Logout
       </button>
-      </Link>
+    
     </div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useStateValue } from '../StateProvider'
 import { Link } from 'react-router-dom';
 
@@ -11,6 +11,21 @@ const Cart = () => {
       id:id
     })
   }
+  useEffect(() => {
+    localStorage.setItem('basket', JSON.stringify(basket));
+    console.log('Basket state saved to local storage:', basket);
+  }, [basket]);
+
+  useEffect(() => {
+    const storedBasket = JSON.parse(localStorage.getItem('basket'));
+    if (storedBasket) {
+      dispatch({ type: 'SET_BASKET', basket: storedBasket });
+      console.log('Basket state retrieved from local storage:', storedBasket);
+    }
+  }, []);
+
+
+
   return (
     <div className="px-4 md:px-8 lg:px-16">
   <h1 className="text-2xl font-semibold mb-4">Shopping Cart</h1>
